@@ -85,7 +85,7 @@ var events = [
 function pageDidLoad() {
     for (var person of people) {
         console.log(person)
-        $("#people").append(rowForPerson(person));
+        $("#entries").append(rowForPerson(person));
     }
 }
 
