@@ -111,7 +111,7 @@ function rowForPerson(person) {
     return `
         <div class="person" id="${person.id}">
             <div class="person-info">
-                <img class="person-image" src="https://avatars0.githubusercontent.com/u/1811727?s=400&u=279b27062312934b6cd885cadfe011d74e7be01c&v=4">
+                <img class="person-image" src="images/${person.id}.jpg">
                 <div class="person-name">${person.name}</div>
                 <div class="person-subtitle">${person.year} · ${person.major} major</div>
             </div>
