@@ -58,27 +58,27 @@ var events = [
     {
         id: "rockclimbing",
         name: "Rock Climbing",
-        description: "--",
+        description: "Head over to the CRC and climb with some bros!",
     }, {
         id: "shoothooch",
         name: "Shoot the Hooch",
-        description: "--"
+        description: "Come raft the Chattahoochee!"
     }, {
         id: "lasertag",
         name: "Laser Tag",
-        description: "--",
+        description: "It's tag, but with lasers.",
     }, {
         id: "bravesgame",
         name: "Braves game",
-        description: "--",
+        description: "Baseball game.",
     }, {
         id: "concert",
-        name: "Find a local Concert",
-        description: "--",
+        name: "Find a local concert",
+        description: "Get together with your group and find an artist you'd like to see perform!",
     }, {
         id: "daveandbusters",
         name: "Dave and Busters",
-        description: "--",
+        description: "Play games of skill!",
     },
 ]
 
