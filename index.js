@@ -54,6 +54,34 @@ var people = [
     },
 ]
 
+var events = [
+    {
+        id: "rockclimbing",
+        name: "Rock Climbing",
+        description: "--",
+    }, {
+        id: "shoothooch",
+        name: "Shoot the Hooch",
+        description: "--"
+    }, {
+        id: "lasertag",
+        name: "Laser Tag",
+        description: "--",
+    }, {
+        id: "bravesgame",
+        name: "Braves game",
+        description: "--",
+    }, {
+        id: "concert",
+        name: "Find a local Concert",
+        description: "--",
+    }, {
+        id: "daveandbusters",
+        name: "Dave and Busters",
+        description: "--",
+    },
+]
+
 function pageDidLoad() {
     for (var person of people) {
         console.log(person)
