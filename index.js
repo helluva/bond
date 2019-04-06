@@ -4,13 +4,53 @@ var people = [
     {
         id: "calstephens",
         name: "Cal Stephens",
-        year: "Senior",
+        year: "4th Year",
         major: "Computer Science"
     }, {
         id: "premsakala",
         name: "Prem Sakala",
-        year: "Sophomore",
+        year: "2nd Year",
         major: "Computer Science"
+    }, {
+        id: "andrewvincent",
+        name: "Andrew Vincent",
+        year: "4th Year",
+        major: "Business"
+    }, {
+        id: "jaredraiola",
+        name: "Jared Raiola",
+        year: "2nd Year",
+        major: "Computer Science"
+    }, {
+        id: "kailashnagapudi",
+        name: "Kailash Nagapudi",
+        year: "4th Year",
+        major: "BME"
+    }, {
+        id: "craigschwartz",
+        name: "Craig Schwartz",
+        year: "4th Year",
+        major: "MSE"
+    }, {
+        id: "giancarlovargas",
+        name: "Giancarlo Vargas",
+        year: "4th Year",
+        major: "Chemical Engineer"
+    }, {
+        id: "walkerbyrnes",
+        name: "Walker Byrnes",
+        year: "4th Year",
+        major: "Mechanical Engineering"
+    }, {
+        id: "jaleenwalker",
+        name: "Jaleen Walker",
+        year: "3rd Year",
+        major: "Computer Science"
+    }, {
+        id: "jackconway",
+        name: "Jack Conway",
+        year: "4th Year",
+        major: "LMC"
     },
 ]
 
