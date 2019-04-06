@@ -37,17 +37,42 @@ body {
     margin-bottom: 30px;
 }
 
-.coatOfArms {
-    position: absolute;
-    opacity: 0.3;
-    top: 140px;
-    right: 60px;
-    z-index: -100;
-    width: 200px;
-}
-
 
 /* Form Contents */
+
+.person {
+    margin-bottom: 60px;
+}
+
+.person-info {
+    
+}
+
+.person-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    float: left;
+    margin-right: 10px;
+}
+
+.person-name {
+    padding-top: 2px;
+    font-size: 18px;
+}
+
+.person-subtitle {
+    color: gray;
+    font-size: 15px;
+    margin-bottom: 30px;
+}
+
+.small {
+    color: gray;
+    font-size: 12px;
+    margin: 10px;
+    
+}
 
 #nameLabel {
     height: 30px;
@@ -61,22 +86,6 @@ select {
     font-size: 14px;
     border: 1px solid #ccc;
     margin-bottom: 10px;
-}
-
-#rusheeInfo {
-    background-color: #fbfbfb;
-    border: 1px solid #ddd;
-    padding: 10px;
-    margin-top: 10px;
-    margin-bottom: 30px;
-}
-
-.rusheeField {
-    font-size: 15px;
-    line-height:  25px;
-    font-family: SF-bold;
-    width: 50px;
-    padding-right: 15px;
 }
 
 .fieldValue {
@@ -153,39 +162,14 @@ select {
     color: black;
 }
 
-.selected-hellyeah {
-    background-color: rgb(255, 238, 30);
-    color: rgb(63, 62, 51);
-}
-
-.selected-yes {
+.selected {
     background-color: rgb(37, 161, 103);
-    color: white;
-}
-
-.selected-idk {
-    background-color: rgb(135, 135, 135);
-    color: white;
-}
-
-.selected-no {
-    background-color: rgb(207, 72, 72);
-    color: white;
-}
-
-.selected-fuckno {
-    background-color: black;
     color: white;
 }
 
 textArea {
    font-family: inherit;
    font-size: inherit;
-}
-
-.webber-sun {
-    width: 330px;
-    height: 200px;
 }
 
 .dialog-no-clode {
@@ -197,41 +181,4 @@ textArea {
 .dialog-no-close .ui-dialog-titlebar {
   display: none;
 }
-
-
-/* Scorecard */
-
-.scorecardTable {
-    margin-top: 35px;
-    background-color: #fbfbfb;
-    border: 0px;
-    border-collapse: collapse;
-}
-
-.scorecardTitle {
-    font-size: 16px;
-    font-family: SF-bold;
-    line-height:  25px;
-    width: 70px;
-    padding: 15px;
-}
-
-.scorecardList {
-    padding: 15px;
-}
-.scorecardTable tr:nth-child(odd){
-    background: #fbfbfb;
-}
-/*  Define the background color for all the EVEN background rows  */
-.scorecardTable tr:nth-child(even){
-    background: #f4f4f4;
-}
-
-#spreadsheetComments {
-    font-size: 16px;
-    line-height: 25px;
-    margin-bottom: 35px;
-    width: 450px;
-}
-
 
