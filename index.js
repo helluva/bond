@@ -106,16 +106,19 @@ function formSubmitted() {
     
 }
 
+function updatePageName(title, subtitle) {
+    
+}
 
 function rowForPerson(person) {
     return `
-        <div class="person" id="${person.id}">
-            <div class="person-info">
-                <img class="person-image" src="images/${person.id}.jpg">
-                <div class="person-name">${person.name}</div>
-                <div class="person-subtitle">${person.year} · ${person.major} major</div>
+        <div class="entry" id="${person.id}">
+            <div class="info">
+                <img class="image" src="images/${person.id}.jpg">
+                <div class="name">${person.name}</div>
+                <div class="subtitle">${person.year} · ${person.major} major</div>
             </div>
-            <div class="person-rating">
+            <div class="rating">
                 <span class="small">Not close</span>
                 <span class="attribute-button unselected" onclick="valueSelected(this)" id="${person.id}-1">1</span>
                 <span class="attribute-button unselected" onclick="valueSelected(this)" id="${person.id}-2">2</span>

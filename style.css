@@ -40,15 +40,20 @@ body {
 
 /* Form Contents */
 
-.person {
-    margin-bottom: 60px;
+.entry {    
+    margin-left:-50px;
+    padding-left:50px;
+    margin-right:-50px;
+    padding-right:50px;
+    padding-top:35px;
+    padding-bottom:45px;
 }
 
-.person-info {
-    
+.entry:nth-child(odd) {
+    background-color: rgb(250,250,250);
 }
 
-.person-image {
+.image {
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -56,12 +61,12 @@ body {
     margin-right: 10px;
 }
 
-.person-name {
+.name {
     padding-top: 2px;
     font-size: 18px;
 }
 
-.person-subtitle {
+.subtitle {
     color: gray;
     font-size: 15px;
     margin-bottom: 30px;
