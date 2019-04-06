@@ -89,6 +89,13 @@ function pageDidLoad() {
     }
 }
 
+function pageDidLoadEvents() {
+    for (var event of events) {
+        console.log(event)
+        $("#entries").append(rowForEvent(event));
+    }
+}
+
 
 function valueSelected(button) {
     var buttonId = $(button).attr("id")
@@ -103,10 +110,12 @@ function valueSelected(button) {
 }
 
 function formSubmitted() {
-    
+		updatePageName()
 }
 
 function updatePageName(title, subtitle) {
+		$('#step-name').text(title)
+		$('#step-instructions').text(subtitle)
     
 }
 
@@ -117,6 +126,27 @@ function rowForPerson(person) {
                 <img class="image" src="images/${person.id}.jpg">
                 <div class="name">${person.name}</div>
                 <div class="subtitle">${person.year} · ${person.major} major</div>
+            </div>
+            <div class="rating">
+                <span class="small">Not close</span>
+                <span class="attribute-button unselected" onclick="valueSelected(this)" id="${person.id}-1">1</span>
+                <span class="attribute-button unselected" onclick="valueSelected(this)" id="${person.id}-2">2</span>
+                <span class="attribute-button unselected" onclick="valueSelected(this)" id="${person.id}-3">3</span>
+                <span class="attribute-button unselected" onclick="valueSelected(this)" id="${person.id}-4">4</span>
+                <span class="attribute-button unselected" onclick="valueSelected(this)" id="${person.id}-5">5</span>
+                <span class="small">Very close</span>
+                </div>
+            </div>
+        </div>`
+}
+
+function rowForEvent(event) {
+    return `
+        <div class="entry" id="${event.id}">
+            <div class="info">
+                <img class="image" src="images/${person.id}.jpg">
+                <div class="name">${event.name}</div>
+                <div class="subtitle">${event.description}</div>
             </div>
             <div class="rating">
                 <span class="small">Not close</span>
