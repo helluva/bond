@@ -40,13 +40,13 @@ body {
 
 /* Form Contents */
 
-#step-name {
+.title {
     margin-top: 40px;
     font-size: 20px;
     font-family: SF-bold;
 }
 
-#step-instructions {
+.subtitle {
     font-size: 18px;
     color: gray;
     margin-bottom: 40px;

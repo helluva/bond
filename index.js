@@ -19,7 +19,7 @@ function displayPeople() {
         "Rate how close you are with other members of the organization.")
     
     for (var person of people) {
-        $("#entries").append(rowForPerson(person));
+        $("#entries").append(ratingRowForPerson(person));
     }
 }
 
@@ -32,7 +32,7 @@ function displayEvents() {
         "Rate how much you'd like to participate in each event.")
     
     for (var event of events) {
-        $("#entries").append(rowForEvent(event));
+        $("#entries").append(ratingRowForEvent(event));
     }
 }
 
@@ -44,6 +44,28 @@ function displayFinalDecision() {
     updatePageName(
         "Your Event", 
         "We’ve matched you with a group of members for you to get to know better!")
+    
+    // randomly choose one of the highest-preferred events
+    shuffle(events)
+    events.sort((lhs, rhs) => preferenceRating(lhs) < preferenceRating(rhs))
+    var event = events[0]
+    
+    // randomly choose the five least-close members
+    shuffle(people)
+    people.sort((lhs, rhs) => closenessRating(lhs) > closenessRating(rhs))
+    var peopleForEvent = people.slice(0, 5)
+    
+    // render the page
+    $("#entries").append(listRowForEvent(event));
+    
+    $("#entries").append(`
+        <div class="title" style="padding-bottom:20px; margin-top: 15px;">Also in your Group</div>
+    `)
+    
+    for (var person of peopleForEvent) {
+        $("#entries").append(listRowForPerson(person));
+    }
+    
 }
 
 
@@ -65,11 +87,11 @@ function valueSelected(button) {
     
     // update the relevant model object
     if (current_step === MEMBERSHIP_SURVEY) {
-        var person = people.find(function(p) { p.id === entryId })
+        var person = people.find((p) => p.id === entryId)
         person.closenessRating = buttonValue
         
     } else if (current_step === EVENT_PREFERENCES) {
-        var event = events.find(function(e) { e.id === entryId })
+        var event = events.find((e) => e.id === entryId)
         event.preferenceRating = buttonValue
     }
 }
@@ -91,47 +113,95 @@ function formSubmitted() {
 function updatePageName(title, subtitle) {
     $('#step-name').text(title)
 	$('#step-instructions').text(subtitle)
-    
 }
 
-function rowForPerson(person) {
+
+// Rating Row
+
+function ratingRowForPerson(person) {
+    return ratingRow(
+        person.id, 
+        person.name, 
+        `${person.year} · ${person.major}`,
+        "Not close", 
+        "Very close")
+}
+
+function ratingRowForEvent(event) {
+    return ratingRow(
+        event.id, 
+        event.name, 
+        event.description, 
+        "Not interested", 
+        "Very interested")
+}
+
+function ratingRow(id, name, description, lowRatingText, highRatingText) {
     return `
-        <div class="entry" id="${person.id}">
+        <div class="entry" id="${id}">
             <div class="info">
-                <img class="image" src="images/${person.id}.jpg">
-                <div class="name">${person.name}</div>
-                <div class="subtitle">${person.year} · ${person.major} major</div>
+                <img class="image" src="images/${id}.jpg">
+                <div class="name">${name}</div>
+                <div class="subtitle">${description}</div>
             </div>
             <div class="rating">
-                <span class="small">Not close</span>
-                <span class="attribute-button unselected" onclick="valueSelected(this)" id="${person.id}-1">1</span>
-                <span class="attribute-button unselected" onclick="valueSelected(this)" id="${person.id}-2">2</span>
-                <span class="attribute-button unselected" onclick="valueSelected(this)" id="${person.id}-3">3</span>
-                <span class="attribute-button unselected" onclick="valueSelected(this)" id="${person.id}-4">4</span>
-                <span class="attribute-button unselected" onclick="valueSelected(this)" id="${person.id}-5">5</span>
-                <span class="small">Very close</span>
+                <span class="small">${lowRatingText}</span>
+                <span class="attribute-button unselected" onclick="valueSelected(this)" id="${id}-1">1</span>
+                <span class="attribute-button unselected" onclick="valueSelected(this)" id="${id}-2">2</span>
+                <span class="attribute-button unselected" onclick="valueSelected(this)" id="${id}-3">3</span>
+                <span class="attribute-button unselected" onclick="valueSelected(this)" id="${id}-4">4</span>
+                <span class="attribute-button unselected" onclick="valueSelected(this)" id="${id}-5">5</span>
+                <span class="small">${highRatingText}</span>
                 </div>
             </div>
         </div>`
 }
 
-function rowForEvent(event) {
+
+// List Row
+
+function listRowForPerson(person) {
+    return listRow(
+        person.id, 
+        person.name, 
+        `${person.year} · ${person.major}`)
+}
+
+function listRowForEvent(event) {
+    return listRow(
+        event.id, 
+        event.name, 
+        event.description)
+}
+
+function listRow(id, name, description,) {
     return `
-        <div class="entry" id="${event.id}">
-            <div class="info">
-                <img class="image" src="images/${event.id}.jpg">
-                <div class="name">${event.name}</div>
-                <div class="subtitle">${event.description}</div>
-            </div>
-            <div class="rating">
-                <span class="small">Not interested</span>
-                <span class="attribute-button unselected" onclick="valueSelected(this)" id="${event.id}-1">1</span>
-                <span class="attribute-button unselected" onclick="valueSelected(this)" id="${event.id}-2">2</span>
-                <span class="attribute-button unselected" onclick="valueSelected(this)" id="${event.id}-3">3</span>
-                <span class="attribute-button unselected" onclick="valueSelected(this)" id="${event.id}-4">4</span>
-                <span class="attribute-button unselected" onclick="valueSelected(this)" id="${event.id}-5">5</span>
-                <span class="small">Very interested</span>
-                </div>
-            </div>
+        <div class="info" style="padding: 5px; margin-left: 15px;">
+            <img class="image" src="images/${id}.jpg">
+            <div class="name">${name}</div>
+            <div class="subtitle">${description}</div>
         </div>`
+}
+
+
+// Helpers
+
+function shuffle(array) {
+  array.sort(() => Math.random() - 0.5);
+}
+
+function closenessRating(person) {
+    if (person.closenessRating == undefined) {
+        return 100000
+    } else {
+        return person.closenessRating
+    }
+} 
+
+function preferenceRating(event) {
+    if (event.preferenceRating == undefined) {
+        return -100000
+    } else {
+        return event.preferenceRating
+    }
 }
