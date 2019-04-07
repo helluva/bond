@@ -5,13 +5,15 @@
         <title>Index</title>
         
         <script src="index.js"></script>
+        <script src="data.js"></script>
+        
         <link rel="stylesheet" type="text/css" href="style.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     </head>
 
-    <body onload="pageDidLoad()">
+    <body onload="displayPeople()">
         <div class="card" id="form">
             
             <div class="formTitle">Event Explorer</div> <br>
@@ -26,7 +28,7 @@
             
             <br>
             
-            <div id="submitArea">
+            <div id="submitButtonContainer">
                 <button class="button" id="submitButton" onclick="formSubmitted();">Submit</button>
                 <span id="content"> </span>
             </div>
